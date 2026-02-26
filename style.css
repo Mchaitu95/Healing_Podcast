@@ -1,0 +1,258 @@
+:root {
+    --brand-green: #2d5a27;
+    --brand-gold: #f3bb22;
+    --bg-color: #fff9e6; /* Your soft yellow */
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: #333;
+    line-height: 1.6;
+}
+
+/* --- NAVIGATION --- */
+header {
+    background-color: white;
+    padding: 10px 50px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    height: 60px;
+    width: auto;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+}
+
+.login-btn {
+    background-color: var(--brand-gold);
+    color: var(--brand-green) !important;
+    padding: 8px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+/* --- 1. THE HERO SECTION (Closes the gap) --- */
+.hero {
+    text-align: center;
+    padding: 70px 15px 10px 15px; /* Slightly more top space now that it's just text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Shrink the top of the Episodes section */
+#episodes {
+    padding-top: 10px;
+    padding-bottom: 0px; /* Removed bottom padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Bring the "Latest Summaries" title closer to the tagline */
+#episodes h2 {
+    margin-top: 0; 
+    margin-bottom: 5px; /* Tiny gap to the book title */
+    font-size: 2rem;
+}
+
+.current-book {
+    margin-top: 0;
+    margin-bottom: 25px; /* Space before the actual cards start */
+}
+.current-book {
+    font-size: 1.2rem; /* Smaller than the heading */
+    font-weight: bold;
+    color: #555;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+/* --- MINIMIZED EPISODE CARDS --- */
+.podcast-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.episode-card {
+    background-color: white !important;
+    padding: 12px;
+    border-radius: 12px;
+    width: 180px; /* Much smaller width */
+    min-height: 100px; /* Shorter length */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease;
+}
+
+.episode-card:hover {
+    transform: translateY(-8px);
+}
+
+.episode-label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--brand-green);
+    margin-bottom: 15px;
+}
+.epi-desc {
+    font-size: 0.85rem; /* Small and clean */
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Pushes the button to the bottom if the text is short */
+}
+
+/* Ensure the card height stays consistent */
+.episode-card {
+    min-height: 180px; 
+    width: 240px;
+}
+
+.view-btn {
+    background-color: var(--brand-gold);
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: none;
+}
+
+/* This is your standard button */
+.view-btn {
+    background-color: var(--brand-gold);
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: 2px solid transparent; /* Prevents jumping when playing */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* This is the "Playing" state triggered by JavaScript */
+.view-btn.playing {
+    background-color: white !important;
+    color: var(--brand-green) !important;
+    border: 2px solid var(--brand-green);
+}
+
+.view-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ALIGN BUTTONS AT THE BOTTOM */
+.read-more, .notify-btn {
+    margin-top: auto; /* Pushes buttons to the bottom line */
+    background-color: var(--brand-gold);
+    padding: 8px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    display: inline-block;
+    width: fit-content;
+}
+
+/* --- FOOTER & SOCIALS --- */
+.social-links-row {
+    margin-top: 10px; /* Reduced from 40px to 10px */
+    padding-top: 0;
+    text-align: center;
+}
+
+.invite-text {
+    margin-bottom: 5px; /* Brings "Join our community" closer to "Walk with us" */
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    width: 25px;
+    transition: 0.3s;
+}
+
+.main-footer {
+    background-color: var(--brand-green);
+    color: white;
+    padding: 40px;
+    text-align: center;
+}
+
+.healing-quote {
+    color: var(--brand-gold);
+    font-style: italic;
+    font-size: 1rem;
+}
+/* 1. Hide the player by default */
+.player-bar {
+    display: none; /* Secretly hidden until Play is clicked */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px; /* Small size (approx 10% of screen) */
+    background: rgba(24, 24, 24, 0.98);
+    color: white;
+    z-index: 9999;
+    border-top: 2px solid var(--brand-gold);
+}
+
+/* 2. Show the player when this class is added */
+.player-bar.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-content {
+    width: 90%;
+    max-width: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Keeps it slim and horizontal */
+}
+
+/* 3. Ensure Footer is never blocked */
+.main-footer {
+    padding: 12px 12px;
+    margin-bottom: 20px; /* Space for the small player bar */
+}
+
+.social-links-row {
+    padding-bottom: 12px;
+}

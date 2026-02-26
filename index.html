@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow and Grow | Healing Podcast</title>
+    <link rel="icon" type="image/png" href="gg.jpg.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#"><img src="profile.png.png" alt="GlowGrow Logo" class="nav-logo"></a>
+            </div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#episodes">Episodes</a></li>
+                <li><a href="#" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1 class="main-title">☀️ THE HEALING PODCAST ☀️</h1>
+        <p class="hero-tagline">A journey from negativity to healing. Start your growth today.</p>
+    </section>
+
+    <main id="episodes">
+    <h2>LATEST SUMMARIES</h2>
+    <p class="current-book">MASTER YOUR EMOTIONS BY THIBAUT MEURISSE</p>
+
+    <div class="podcast-grid">
+        <article class="episode-card">
+        <div class="card-content">
+          <p class="episode-label">EPISODE 1</p>
+          <p class="epi-desc">Introduction to emotional survival mechanisms and how they affect your growth. Includes a workbook exercise guide.</p>
+        
+          <audio id="audio-ep1">
+            <source src="episode1.mp3.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <button onclick="toggleAudio('audio-ep1', this)" class="view-btn">
+            <span class="btn-text">Play</span> 🎧
+        </button>
+    </div>
+
+    </article>
+    </div> </main>
+
+<script>
+function toggleAudio(audioId, btn) {
+    var audio = document.getElementById(audioId);
+    var playerBar = document.getElementById('spotify-player');
+    var btnText = btn.querySelector('.btn-text');
+
+    if (audio.paused) {
+        audio.play();
+        btnText.innerHTML = "Pause";
+        
+        // Show the small player bar
+        playerBar.classList.add('active');
+        
+        // Update progress
+        audio.ontimeupdate = function() {
+            var progressBar = document.getElementById('progress-bar');
+            var currentTimeDisplay = document.getElementById('current-time');
+            var progress = (audio.currentTime / audio.duration) * 100;
+            progressBar.value = progress;
+            
+            var mins = Math.floor(audio.currentTime / 60);
+            var secs = Math.floor(audio.currentTime % 60);
+            currentTimeDisplay.innerHTML = mins + ":" + (secs < 10 ? '0' : '') + secs;
+        };
+    } else {
+        audio.pause();
+        btnText.innerHTML = "Play";
+        // Optional: playerBar.classList.remove('active'); // Hide if paused
+    }
+}
+</script>
+<div id="spotify-player" class="player-bar">
+    <div class="player-content">
+        <div class="song-info">
+            <span class="now-playing">NOW PLAYING:</span>
+            <span class="track-name">EPI 1 - Introduction</span>
+        </div>
+        
+        <div class="controls">
+            <span id="current-time">0:00</span>
+            <input type="range" id="progress-bar" value="0" max="100">
+            <span id="duration">0:00</span>
+        </div>
+    </div>
+</div>
+<section class="social-links-row">
+        <div class="social-header">
+            <p class="invite-text">✨ JOIN OUR HEALING COMMUNITY ✨</p>
+            <h3 class="follow-text">Walk with us on our journey</h3>
+        </div>
+        <div class="social-container">
+            <a href="https://www.instagram.com/glowandgrowdaily89/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" class="social-icon">
+            </a>
+            <a href="https://www.facebook.com/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook" class="social-icon">
+            </a>
+            <a href="https://www.youtube.com/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" class="social-icon">
+            </a>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <p class="healing-quote">"Heal your mind, and the world heals with you."</p>
+        <p class="copyright">© 2026 Heal with Grow and Glow</p>
+    </footer>
+
+</body>
+</html>
